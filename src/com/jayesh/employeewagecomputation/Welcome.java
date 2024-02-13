@@ -1,20 +1,20 @@
 package com.jayesh.employeewagecomputation;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class Welcome {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		int attendance = 0;
+		int dailyWage = 0;
+		final int WAGE_PER_HR = 20;
+		final int FULL_DAY_HR = 8;
 		
 		System.out.println("Welcome to Employee Wage Computation");
 		
-		int attendance=0;
-		
-		System.out.print("Enter Attendance [ 0 for Absend / 1 for Present  ] :");
-		
-		Scanner obj =new Scanner(System.in);
-		attendance=obj.nextInt();
+		Random random = new Random();
+		attendance = random.nextInt(9) % 2;
 		
 		if(attendance==0)
 		{
@@ -22,10 +22,9 @@ public class Welcome {
 		}
 		else
 		{
-			System.out.println("Employee is Absent");
+			System.out.println("Employee is Present");
+			dailyWage = WAGE_PER_HR * FULL_DAY_HR;
+			System.out.println("Employee Wage = "+ dailyWage);
 		}
-		
-		
 	}
-
 }

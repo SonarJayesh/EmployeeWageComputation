@@ -18,25 +18,41 @@ public class EmployeeWageComputation {
 		Random random = new Random();
 		attendance = random.nextInt(9) % 2;
 		
-		if(attendance==0) {
+	switch(attendance)
+	{
+		case 0:
+		System.out.println("Employee is Absent");
+		break;
 		
-			System.out.println("Employee is Absent");
-		}
-		else {
+		case 1:
+		System.out.println("Empoyee is Present");
+
+		employee_type = random.nextInt(9) % 2;
 		
-			System.out.println("Employee is Present");
-			employee_type = random.nextInt(9) % 2;
-			
-			if(employee_type == 0) {
-			
-				System.out.println("Employee is Part Time");
-				dailyWage = WAGE_PER_HR * PART_TIME_HR;
-			}
-			else {
-				System.out.println("Emplyee is Full Time");
-				dailyWage = WAGE_PER_HR * FULL_TIME_HR;
-			}
-			System.out.println("Employee Wage = "+ dailyWage);
+				switch(employee_type)
+				{
+				
+					case 0:
+						System.out.println("Employee is Part Time");
+						dailyWage = PART_TIME_HR * WAGE_PER_HR;
+						System.out.println("Employee Wage = " + dailyWage);
+						break;
+					
+					case 1:
+						System.out.println("Employee is Full Time");
+						dailyWage = FULL_TIME_HR * WAGE_PER_HR;
+						System.out.println("Employee Wage = " + dailyWage);
+						break;
+						
+					default:
+						System.out.println("Case is not Match");
+				
+				}
+		break;
+		
+		default:
+		System.out.println("Case is Not Match");	
+				
 		}
 	}
 }

@@ -8,51 +8,93 @@ public class EmployeeWageComputation {
 		
 		int attendance;
 		int employee_type;
-		int dailyWage;
+		int dailyWage = 0;
+		int i; 
 		final int WAGE_PER_HR = 20;
 		final int FULL_TIME_HR = 8;
 		final int PART_TIME_HR = 4;
+		final int WAGE_PER_MONTHDAY=20;
+		int Month_Emp_Part_Time = 0;
+		int Month_Emp_Full_Time = 0;
+		int MonthlyWage = 0;
 		
 		System.out.println("Welcome to Employee Wage Computation Program");
 		
-		Random random = new Random();
-		attendance = random.nextInt(9) % 2;
+		for(i = 1 ; i <= WAGE_PER_MONTHDAY; i++ )
+		{
+			System.out.println("Day : "+ i );
 		
-	switch(attendance)
-	{
-		case 0:
-		System.out.println("Employee is Absent");
-		break;
+			Random random = new Random();
+			attendance = random.nextInt(9) % 2;
+			
+			System.out.println(attendance);
+			switch(attendance)
 		
-		case 1:
-		System.out.println("Empoyee is Present");
-
-		employee_type = random.nextInt(9) % 2;
-		
-				switch(employee_type)
 				{
-				
 					case 0:
-						System.out.println("Employee is Part Time");
-						dailyWage = PART_TIME_HR * WAGE_PER_HR;
-						System.out.println("Employee Wage = " + dailyWage);
-						break;
+					System.out.println("Employee is Absent");
+					break;
 					
 					case 1:
-						System.out.println("Employee is Full Time");
-						dailyWage = FULL_TIME_HR * WAGE_PER_HR;
-						System.out.println("Employee Wage = " + dailyWage);
-						break;
+					System.out.println("Employee is Present");
+					
+					
+					employee_type = random.nextInt(9) % 2;
+					
 						
+						switch(employee_type)
+						{
+							
+							case 0:
+								System.out.println("Employee is a Part Time");
+								dailyWage = PART_TIME_HR * WAGE_PER_HR;
+								System.out.println("Employee Wage is : " + dailyWage);
+								Month_Emp_Part_Time +=1;
+					
+								break;
+							
+								
+							case 1:
+								System.out.println("Employee is a Full Time");
+								dailyWage = FULL_TIME_HR *WAGE_PER_HR;
+								System.out.println("Employee Wage is : " + dailyWage);
+								Month_Emp_Full_Time +=1;
+								MonthlyWage = Month_Emp_Part_Time * dailyWage;
+							
+								break;
+								
+							default:
+								System.out.println("Case Is not Match");
+								
+								
+							}
+					
+					break;
+					
 					default:
 						System.out.println("Case is not Match");
-				
+							
+					}
+					
+					System.out.println();
+					
+					
 				}
-		break;
-		
-		default:
-		System.out.println("Case is Not Match");	
 				
+				Random random =new Random();
+				employee_type = random.nextInt(3) % 2;
+				
+				if(employee_type == 0)
+				{
+					MonthlyWage = Month_Emp_Part_Time *dailyWage;
+					System.out.println("Monthly Attendance of Part time Employee" + Month_Emp_Part_Time + "\n" + "Part Time Employee Salary : "+ MonthlyWage );
+				}	
+				else
+				{
+					MonthlyWage =  Month_Emp_Full_Time * dailyWage;
+					System.out.println("Monthly Attendance of FullTime Employee : " + Month_Emp_Full_Time + "\n "+ "Full time Employee Salary :" + MonthlyWage);
+				}
+	
 		}
-	}
+	
 }

@@ -10,17 +10,17 @@ public class EmployeeWageComputation {
 	int total_Wage = 0;
 	int Total_Working_Hr = 0;
 	int Total_Working_Days = 1;
-	final int WAGE_PER_HR = 20;
+	int wage_Per_Hr;
 	final int FULL_TIME_HR = 8;
 	final int PART_TIME_HR = 4;
-	final int WAGE_PER_MONTHDAY=20;
-	final int MONTHLY_HR = 100;
+	int wage_Per_MonthDay;
+	int monthly_Hr;
 	
 	public void employeeWageCalc() {
 	
 	System.out.println("Welcome to Employee Wage Computation Program");
 	
-	while(Total_Working_Hr <= MONTHLY_HR && Total_Working_Days <= WAGE_PER_MONTHDAY) {
+	while(Total_Working_Hr <= monthly_Hr && Total_Working_Days <= wage_Per_MonthDay) {
 		
 		System.out.println("Day : "+ Total_Working_Days  );
 		Random random = new Random();
@@ -42,14 +42,14 @@ public class EmployeeWageComputation {
 						
 						case 0:
 							System.out.println("Employee is a Part Time");
-							dailyWage = PART_TIME_HR * WAGE_PER_HR;
+							dailyWage = PART_TIME_HR * wage_Per_MonthDay;
 							Total_Working_Hr += PART_TIME_HR;
 				
 							break;
 							
 						case 1:
 							System.out.println("Employee is a Full Time");
-							dailyWage = FULL_TIME_HR * WAGE_PER_HR;
+							dailyWage = FULL_TIME_HR * wage_Per_MonthDay;
 							Total_Working_Hr += FULL_TIME_HR;
 							
 							break;	
@@ -68,9 +68,21 @@ public class EmployeeWageComputation {
 				System.out.println("Total Monthly Wage = "+ total_Wage);
 			
 		}		
+	
+		public EmployeeWageComputation(int wage_Per_Hr , int wage_Per_MonthDay, int monthly_Hr ) {
+			
+			this.wage_Per_Hr = wage_Per_Hr;
+			this.wage_Per_MonthDay = wage_Per_MonthDay;
+			this.monthly_Hr = monthly_Hr;
+		}
+	
 		public static void main(String[] args) {
 		
-			EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation();
+			EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation(22,18,80);
 			employeeWageComputation.employeeWageCalc();
+		
+			EmployeeWageComputation employeeWageComputation2 = new EmployeeWageComputation(15,22,120);
+			employeeWageComputation2.employeeWageCalc();
+			
 		}
 }
